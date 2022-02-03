@@ -1,0 +1,20 @@
+# workflow file : https://github.com/cph-scorer/ci/tree/main/.github/workflows
+name: Continuous Integration
+
+on: [workflow_dispatch]
+
+jobs:
+  lint:
+    uses: cph-scorer/ci/.github/workflows/run-pnpm-script.yml@main
+    with:
+      script: lint
+
+  test:
+    uses: cph-scorer/ci/.github/workflows/test.yml@main
+    with:
+      publish-coverage: false
+
+  build:
+    uses: cph-scorer/ci/.github/workflows/run-pnpm-script.yml@main
+    with:
+      script: build

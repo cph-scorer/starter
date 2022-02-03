@@ -1,0 +1,21 @@
+{
+  "name": "root",
+  "license": "MIT",
+  "version": "0.0.1",
+  "engines": {
+    "node": "16"
+  },
+  "scripts": {
+    "postinstall": "husky install",
+    "start": "pm2 start ecosystem.config.js",
+    "stop": "pm2 del ecosystem.config.js"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^16.0.0",
+    "@ls-lint/ls-lint": "^1.10.0",
+    "@types/node": "^16.0.0",
+    "commitlint": "^16.1.0",
+    "husky": "^7.0.4",
+    "pm2": "^5.1.2"
+  }
+}

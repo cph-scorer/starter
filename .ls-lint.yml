@@ -1,0 +1,19 @@
+ls:
+    packages/api/src:
+        .ts: kebabcase
+        .module.ts: kebabcase
+        .service.ts: kebabcase
+        .controler.ts: kebabcase
+        .config.ts: kebabcase
+        .entity.ts: kebabcase
+        .provider.ts: kebabcase
+        .dto.ts: kebabcase
+        .controller.ts: kebabcase
+        .d.ts: kebabcase
+
+    packages/client/src:
+        .js: kebabcase
+        .svelte: pascalcase
+        .scss: regex:^(_?[a-z\d]*)(-[a-z\d]+)*$
+ignore:
+    - node_modules

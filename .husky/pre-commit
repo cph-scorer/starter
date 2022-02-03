@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+pnpm exec ls-lint
+pnpm run format --filter "...[origin/$(git rev-parse --abbrev-ref HEAD)]"
