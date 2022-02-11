@@ -1,7 +1,10 @@
 # workflow file : https://github.com/cph-scorer/ci/tree/main/.github/workflows
 name: Continuous Integration
 
-on: [workflow_dispatch]
+on:
+  push:
+    branches-ignore:
+      - 'main'
 
 jobs:
   lint:
@@ -18,3 +21,15 @@ jobs:
     uses: cph-scorer/ci/.github/workflows/run-pnpm-script.yml@main
     with:
       script: build
+
+  deploy-to-staging:
+    needs: [lint, test, build]
+    if: github.ref == 'refs/heads/develop'
+    uses: cph-scorer/ci/.github/workflows/deploy-client.yml@main
+    with:
+      environment: staging
+      remove-old-version: true
+    secrets:
+      AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_ACCESS_SECRET: ${{ secrets.AWS_ACCESS_SECRET }}
